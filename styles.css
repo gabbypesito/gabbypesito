@@ -1,4 +1,5 @@
-/* styles.css */
+/* Import Public Pixel font */
+@import url('https://fonts.cdnfonts.com/css/public-pixel'); /* or use the <link> in HTML */
 
 /* Tron grid canvas styling */
 #tronGrid {
@@ -10,7 +11,7 @@
   z-index: -2; /* behind overlay and content */
 }
 
-/* Overlay for waves / glow above grid */
+/* Overlay for "waves" / glow above the grid */
 #wavesOverlay {
   position: fixed;
   top: 0;
@@ -18,7 +19,7 @@
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  pointer-events: none; /* so it doesn’t block clicks */
+  pointer-events: none;
   background: linear-gradient(
     45deg,
     rgba(50, 0, 70, 0.2),
@@ -30,88 +31,55 @@
   animation: waveAnimation 20s ease infinite;
 }
 
-/* wave animation for overlay gradient */
 @keyframes waveAnimation {
   0%    { background-position: 0% 50%; }
   50%   { background-position: 100% 50%; }
   100%  { background-position: 0% 50%; }
 }
 
-/* Base reset / body */
+/* Base & Pixel Font Setup */
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  color: #c0c0c0;
-  font-family: "Public Pixel", Courier, monospace;
-  background: #010101; /* almost black fallback */
+  color: #ffffff; /* white text by default */
+  font-family: 'Public Pixel', "Courier New", Courier, monospace;
+  background: #000000; /* very dark fallback background */
 }
 
-/* Links */
-a {
-  color: #66ccff;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #ff7777;
-  background: #003355;
-}
-
-/* Side-box: make text white */
+/* Side-boxes with white text */
 .side-box {
   width: 180px;
   padding: 10px;
   border: 4px solid #0077cc;
   background: #1f1f1f;
-  color: #ffffff; /* changed to white */
+  color: #ffffff; /* white text */
+  font-family: 'Public Pixel', "Courier New", Courier, monospace;
 }
 
 .side-box h2 {
   margin-top: 0;
   color: #00ccff;
   text-align: center;
+  font-family: 'Public Pixel', "Courier New", Courier, monospace;
 }
 
-/* rest of your existing styles unchanged */
-
-img.glitchy {
-  position: relative;
-  transition: transform 0.2s;
-}
-
-img.glitchy:hover {
-  transform: skew(-2deg, 2deg) translate(2px, -2px);
-}
-
-hr {
-  border: 1px dashed #0077cc;
-  width: 90%;
-}
-
-.footer {
-  font-size: 0.8em;
-  text-align: center;
-  margin-top: 20px;
-  color: #888888;
-}
-
-.outer-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 20px;
-  gap: 10px;
-}
-
+/* Main content area */
 .container.main-content {
   width: 800px;
   padding: 10px;
   border: 4px solid #0077cc;
   background: #1f1f1f;
+  font-family: 'Public Pixel', "Courier New", Courier, monospace;
 }
 
+/* Other general elements with pixel font */
+h1, .glitch, .typing-paragraph, .menu td, .marquee {
+  font-family: 'Public Pixel', "Courier New", Courier, monospace;
+}
+
+/* Title / glitch heading */
 h1 {
   position: relative;
   font-size: 2.5em;
@@ -166,6 +134,7 @@ h1 {
   100% { clip: rect(30px, 9999px, 60px, 0); transform: skew(0deg); }
 }
 
+/* Menu, marquee, etc */
 .menu {
   margin: 10px 0;
 }
@@ -180,6 +149,7 @@ h1 {
   padding: 5px;
 }
 
+/* Marquee */
 .marquee {
   font-size: 1.2em;
   color: #00ffcc;
@@ -190,8 +160,9 @@ h1 {
   50% { visibility: hidden; }
 }
 
+/* Typing paragraph */
 .typing-paragraph {
-  font-family: "Public Pixel", Courier, monospace;
+  font-family: 'Public Pixel', "Courier New", Courier, monospace;
   color: #c0c0c0;
   white-space: pre-wrap;
 }
