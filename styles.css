@@ -44,7 +44,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   color: #c0c0c0;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Public Pixel", Courier, monospace;
   background: #010101; /* almost black fallback */
 }
 
