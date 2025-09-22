@@ -1,18 +1,18 @@
-/* styles.css */
+/* put at top of your styles.css, so the grid is background */
 
-/* Reset & Base */
+#tronGrid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* behind all content */
+}
+
 body {
   margin: 0;
   padding: 0;
-  /* layered background: gradient overlay + tile image */
-  background-image:
-    linear-gradient(rgba(60, 60, 60, 0.9), rgba(30, 30, 30, 0.9)),
-    url('tile_bg.png');
-  background-repeat: repeat;
-  background-size: auto;
-  background-blend-mode: multiply; /* blends gradient + tile */
-  color: #c0c0c0; /* light grey text */
-  font-family: "Courier New", Courier, monospace;
+  overflow: hidden; /* optional, prevents scrollbars from slight movement */
 }
 
 a {
