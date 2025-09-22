@@ -8,6 +8,24 @@
   width: 100vw;
   height: 100vh;
   z-index: -2;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(0deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(1000px) rotateX(60deg);
+  transform-origin: center;
+  animation: gridAnimation 10s infinite linear;
+}
+
+@keyframes gridAnimation {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 100% 100%, 100% 100%;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+  }
 }
 
 /* Overlay for waves */
@@ -19,21 +37,22 @@
   height: 100vh;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(
-    45deg,
-    rgba(50, 0, 70, 0.2),
-    rgba(0, 20, 70, 0.2),
-    rgba(80, 0, 120, 0.2),
-    rgba(0, 20, 70, 0.2)
-  );
+  background: linear-gradient(45deg, rgba(50, 0, 70, 0.2), rgba(0, 20, 70, 0.2),
+                              rgba(80, 0, 120, 0.2), rgba(0, 20, 70, 0.2));
   background-size: 400% 400%;
   animation: waveAnimation 20s ease infinite;
 }
 
 @keyframes waveAnimation {
-  0%    { background-position: 0% 50%; }
-  50%   { background-position: 100% 50%; }
-  100%  { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 body {
