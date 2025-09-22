@@ -40,8 +40,56 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(type, delayBetween);
       }
     }
+
   }
 
   // Start the cycle
   type();
 });
+
+//grid background 
+(function() {
+  const canvas = document.getElementById('tronGrid');
+  const ctx = canvas.getContext('2d');
+  
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  const gridColor = 'rgba(0, 200, 255, 0.25)'; // neon-cyan effect
+  const lineWidth = 1;
+  const spacing = 80; // distance between grid lines
+  let offset = 0;
+  const speed = 0.5; // how fast grid moves
+
+  function drawGrid() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = lineWidth;
+
+    // vertical lines
+    for (let x = -spacing + (offset % spacing); x < canvas.width; x += spacing) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, canvas.height);
+      ctx.stroke();
+    }
+    // horizontal lines
+    for (let y = -spacing + (offset % spacing); y < canvas.height; y += spacing) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(canvas.width, y);
+      ctx.stroke();
+    }
+
+    offset += speed;
+    requestAnimationFrame(drawGrid);
+  }
+
+  drawGrid();
+})();
+
