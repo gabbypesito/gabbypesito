@@ -53,14 +53,17 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const gridColor = 'rgba(0, 200, 255, 0.25)';
+    const gridColor = 'rgba(30, 30, 30, 0.5)';   // dark grid lines, subtle
+    const bgColor = '#000000';                  // background inside canvas
     const lineWidth = 1;
     const spacing = 80;
     let offset = 0;
     const speed = 0.5;
 
     function drawGrid() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // fill background dark
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.strokeStyle = gridColor;
       ctx.lineWidth = lineWidth;
