@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
     "I wanted to go for a retro, geocities vibe :)",
     "Enjoy your stay!"
   ];
-  
+
   const typingElem = document.getElementById("typing-text");
-  const typingSpeed = 75;    // ms per character typed
-  const erasingSpeed = 50;   // ms per character erased
-  const delayBetween = 2000; // ms before erasing after fully typed
+  const typingSpeed = 75;
+  const erasingSpeed = 50;
+  const delayBetween = 2000;
   let msgIndex = 0;
   let charIndex = 0;
   let isErasing = false;
@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // Tron-style grid background logic
   (function drawGridModule() {
     const canvas = document.getElementById('tronGrid');
     if (!canvas) {
@@ -46,6 +45,10 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
     const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      console.error("2D context not available");
+      return;
+    }
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -54,29 +57,28 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const bgColor = '#000000';                          // black
-    const gridColor = 'rgba(0, 150, 255, 0.6)';         // brighter blue, more visible
+    const bgColor = '#000010';               // almost black but a bit of blue tint
+    const gridColor = 'rgba(0, 170, 255, 0.7)'; // bright blue lines, fairly visible
     const lineWidth = 1;
     const spacing = 80;
     let offset = 0;
-    const speed = 0.5;
+    const speed = 0.7;
 
     function drawGrid() {
-      // fill background first
+      // fill background with slight tint
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // draw vertical grid lines
+      // draw grid lines
       ctx.strokeStyle = gridColor;
       ctx.lineWidth = lineWidth;
+
       for (let x = -spacing + (offset % spacing); x < canvas.width; x += spacing) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
       }
-
-      // draw horizontal grid lines
       for (let y = -spacing + (offset % spacing); y < canvas.height; y += spacing) {
         ctx.beginPath();
         ctx.moveTo(0, y);
@@ -91,6 +93,5 @@ document.addEventListener("DOMContentLoaded", function() {
     drawGrid();
   })();
 
-  // Start typing loop
   typeLoop();
 });
