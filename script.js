@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
   const messages = [
-    "Hey there! You stumbled upon my little corner of the web.",
+    "Hey there! Welcome to my little personal site",
     "This site is intentionally glitchy and clunky.",
-    "Retro vibes only :)",
+    "I wanted to go for a retro, geocities vibe :)",
     "Enjoy your stay!"
   ];
   const typingElem = document.getElementById("typing-text");
