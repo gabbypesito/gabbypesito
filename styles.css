@@ -4,7 +4,13 @@
 body {
   margin: 0;
   padding: 0;
-  background: #2e2e2e url('tile_bg.png') repeat; /* grey tile pattern background */
+  /* layered background: gradient overlay + tile image */
+  background-image:
+    linear-gradient(rgba(60, 60, 60, 0.9), rgba(30, 30, 30, 0.9)),
+    url('tile_bg.png');
+  background-repeat: repeat;
+  background-size: auto;
+  background-blend-mode: multiply; /* blends gradient + tile */
   color: #c0c0c0; /* light grey text */
   font-family: "Courier New", Courier, monospace;
 }
@@ -151,14 +157,10 @@ h1 {
 }
 
 /* Typing effect styles */
-
-/* The paragraph where messages will type */
 .typing-paragraph {
   font-family: "Courier New", Courier, monospace;
   color: #c0c0c0;
-  white-space: pre-wrap; /* allows wrapping and preserves whitespace */
-  /* ensure it’s visible and not clipped by something else */
-  /* no width: 0 here since JS handles the content insertion */
+  white-space: pre-wrap; /* preserves whitespace and allows wrapping */
 }
 
 .typing-paragraph::after {
@@ -173,10 +175,3 @@ h1 {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
-
-/* You can also adjust / override speeds by adding optional classes, if desired,
-   for example:
-   .typing-fast { --typing-speed: 50ms; }
-   .typing-slow { --typing-speed: 150ms; }
-   But that would need support in your JS. */
-
