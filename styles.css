@@ -7,7 +7,34 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1; /* behind all content */
+  z-index: -2; /* behind overlay and content */
+}
+
+/* Overlay for waves / glow above grid */
+#wavesOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none; /* so it doesn’t block clicks */
+  background: linear-gradient(
+    45deg,
+    rgba(50, 0, 70, 0.2),
+    rgba(0, 20, 70, 0.2),
+    rgba(80, 0, 120, 0.2),
+    rgba(0, 20, 70, 0.2)
+  );
+  background-size: 400% 400%;
+  animation: waveAnimation 20s ease infinite;
+}
+
+/* wave animation for overlay gradient */
+@keyframes waveAnimation {
+  0%    { background-position: 0% 50%; }
+  50%   { background-position: 100% 50%; }
+  100%  { background-position: 0% 50%; }
 }
 
 /* Base reset / body */
@@ -18,7 +45,7 @@ body {
   overflow-y: auto;
   color: #c0c0c0;
   font-family: "Courier New", Courier, monospace;
-  background: #1f1f1f; /* fallback if canvas doesn’t work */
+  background: #010101; /* almost black fallback */
 }
 
 /* Links */
@@ -32,7 +59,23 @@ a:hover {
   background: #003355;
 }
 
-/* Glitchy image hover */
+/* Side-box: make text white */
+.side-box {
+  width: 180px;
+  padding: 10px;
+  border: 4px solid #0077cc;
+  background: #1f1f1f;
+  color: #ffffff; /* changed to white */
+}
+
+.side-box h2 {
+  margin-top: 0;
+  color: #00ccff;
+  text-align: center;
+}
+
+/* rest of your existing styles unchanged */
+
 img.glitchy {
   position: relative;
   transition: transform 0.2s;
@@ -42,7 +85,6 @@ img.glitchy:hover {
   transform: skew(-2deg, 2deg) translate(2px, -2px);
 }
 
-/* HR & footer */
 hr {
   border: 1px dashed #0077cc;
   width: 90%;
@@ -55,27 +97,12 @@ hr {
   color: #888888;
 }
 
-/* Layout: side boxes + main content */
 .outer-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin: 20px;
   gap: 10px;
-}
-
-.side-box {
-  width: 180px;
-  padding: 10px;
-  border: 4px solid #0077cc;
-  background: #1f1f1f;
-  color: #c0c0c0;
-}
-
-.side-box h2 {
-  margin-top: 0;
-  color: #00ccff;
-  text-align: center;
 }
 
 .container.main-content {
@@ -85,7 +112,6 @@ hr {
   background: #1f1f1f;
 }
 
-/* Title / glitch heading */
 h1 {
   position: relative;
   font-size: 2.5em;
@@ -140,7 +166,6 @@ h1 {
   100% { clip: rect(30px, 9999px, 60px, 0); transform: skew(0deg); }
 }
 
-/* Menu, marquee etc. */
 .menu {
   margin: 10px 0;
 }
@@ -165,7 +190,6 @@ h1 {
   50% { visibility: hidden; }
 }
 
-/* Typing effect styles */
 .typing-paragraph {
   font-family: "Courier New", Courier, monospace;
   color: #c0c0c0;
