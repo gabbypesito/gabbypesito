@@ -57,41 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const bgColor = '#000010';               // almost black but a bit of blue tint
-    const gridColor = 'rgba(0, 170, 255, 0.7)'; // bright blue lines, fairly visible
+    const bgColor = '#000010';
+    const gridColor = 'rgba(0, 170, 255, 0.7)';
     const lineWidth = 1;
-    const spacing = 80;
-    let offset = 0;
-    const speed = 0.7;
-
-    function drawGrid() {
-      // fill background with slight tint
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // draw grid lines
-      ctx.strokeStyle = gridColor;
-      ctx.lineWidth = lineWidth;
-
-      for (let x = -spacing + (offset % spacing); x < canvas.width; x += spacing) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
-      }
-      for (let y = -spacing + (offset % spacing); y < canvas.height; y += spacing) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-
-      offset += speed;
-      requestAnimationFrame(drawGrid);
-    }
-
-    drawGrid();
-  })();
-
-  typeLoop();
-});
