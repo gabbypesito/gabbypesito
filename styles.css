@@ -1,86 +1,24 @@
-/* Import Neue Pixel Sans is already done via <link> in HTML */
-
-/* Grid canvas styling */
-#tronGrid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-}
-
-/* Overlay for waves */
-#wavesOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(
-    45deg,
-    rgba(50, 0, 70, 0.2),
-    rgba(0, 20, 70, 0.2),
-    rgba(80, 0, 120, 0.2),
-    rgba(0, 20, 70, 0.2)
-  );
-  background-size: 400% 400%;
-  animation: waveAnimation 20s ease infinite;
-}
-
-@keyframes waveAnimation {
-  0%    { background-position: 0% 50%; }
-  50%   { background-position: 100% 50%; }
-  100%  { background-position: 0% 50%; }
-}
-
+/* Reset & base */
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: #000000;
-  color: #ffffff;
-  font-family: 'Neue Pixel Sans', "Courier New", Courier, monospace;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
+  background: #2e2e2e url('tile_bg.png') repeat; /* grey tile pattern background */
+  color: #c0c0c0; /* light grey text */
+  font-family: "Courier New", Courier, monospace;
 }
 
-/* Side box text white */
-.side-box {
-  width: 180px;
-  padding: 10px;
-  border: 4px solid #0077cc;
-  background: #1f1f1f;
-  color: #ffffff;
-  font-family: 'Neue Pixel Sans', "Courier New", Courier, monospace;
-}
-
-.side-box h2 {
-  margin-top: 0;
-  color: #00ccff;
-  text-align: center;
-  font-family: 'Neue Pixel Sans', "Courier New", Courier, monospace;
-}
-
-.container.main-content {
+.container {
   width: 800px;
+  margin: 20px auto;
   padding: 10px;
-  border: 4px solid #0077cc;
-  background: #1f1f1f;
-  font-family: 'Neue Pixel Sans', "Courier New", Courier, monospace;
-}
-
-h1, .glitch, .typing-paragraph, .menu td, .marquee {
-  font-family: 'Neue Pixel Sans', "Courier New", Courier, monospace;
+  border: 4px solid #0077cc; /* blue border */
+  background: #1f1f1f; /* darker grey inside container */
 }
 
 h1 {
   position: relative;
   font-size: 2.5em;
-  color: #00ccff;
+  color: #00ccff; /* bright cyan-blue heading */
   margin: 0;
   padding-bottom: 10px;
   overflow: visible;
@@ -91,6 +29,7 @@ h1 {
   position: relative;
 }
 
+/* Glitch effect */
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -104,14 +43,14 @@ h1 {
 .glitch::before {
   left: 2px;
   text-shadow: -2px 0 #ff00ff;
-  clip: rect(0px, 9999px, 30px, 0);
+  clip: rect(0px, 100%, 30px, 0);
   animation: glitchTop 2s infinite linear alternate-reverse;
 }
 
 .glitch::after {
   left: -2px;
   text-shadow: -2px 0 #00ff00;
-  clip: rect(30px, 9999px, 60px, 0);
+  clip: rect(30px, 100%, 60px, 0);
   animation: glitchBottom 2s infinite linear alternate-reverse;
 }
 
@@ -129,6 +68,16 @@ h1 {
   50%  { clip: rect(40px, 9999px, 50px, 0); transform: skew(3deg); }
   75%  { clip: rect(45px, 9999px, 55px, 0); transform: skew(-5deg); }
   100% { clip: rect(30px, 9999px, 60px, 0); transform: skew(0deg); }
+}
+
+a {
+  color: #66ccff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #ff7777;
+  background: #003355;
 }
 
 .menu {
@@ -155,21 +104,23 @@ h1 {
   50% { visibility: hidden; }
 }
 
-.typing-paragraph {
-  font-family: 'Neue Pixel Sans', "Courier New", Courier, monospace;
-  color: #c0c0c0;
-  white-space: pre-wrap;
+img.glitchy {
+  position: relative;
+  transition: transform 0.2s;
 }
 
-.typing-paragraph::after {
-  content: "|";
-  display: inline-block;
-  margin-left: 2px;
-  color: #00ccff;
-  animation: blinkCursor 0.7s infinite;
+img.glitchy:hover {
+  transform: skew(-2deg, 2deg) translate(2px, -2px);
 }
 
-@keyframes blinkCursor {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+hr {
+  border: 1px dashed #0077cc;
+  width: 90%;
+}
+
+.footer {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 20px;
+  color: #888888;
 }
