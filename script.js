@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Your texts / messages
   const messages = [
     "Hey there! Welcome to my little personal site",
     "This site is intentionally glitchy and clunky.",
@@ -33,17 +32,19 @@ document.addEventListener("DOMContentLoaded", function() {
         charIndex++;
         setTimeout(typeLoop, typingSpeed);
       } else {
-        // fully typed, wait then erase
         isErasing = true;
         setTimeout(typeLoop, delayBetween);
       }
     }
   }
 
-  // Tron grid background logic
+  // Tron-style grid background logic
   (function drawGridModule() {
     const canvas = document.getElementById('tronGrid');
-    if (!canvas) return;
+    if (!canvas) {
+      console.error("tronGrid canvas not found");
+      return;
+    }
     const ctx = canvas.getContext('2d');
 
     function resizeCanvas() {
@@ -53,29 +54,29 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const gridColor = 'rgba(30, 30, 30, 0.5)';   // dark grid lines, subtle
-    const bgColor = '#000000';                  // background inside canvas
+    const bgColor = '#000000';                          // black
+    const gridColor = 'rgba(0, 150, 255, 0.6)';         // brighter blue, more visible
     const lineWidth = 1;
     const spacing = 80;
     let offset = 0;
     const speed = 0.5;
 
     function drawGrid() {
-      // fill background dark
+      // fill background first
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      // draw vertical grid lines
       ctx.strokeStyle = gridColor;
       ctx.lineWidth = lineWidth;
-
-      // vertical lines
       for (let x = -spacing + (offset % spacing); x < canvas.width; x += spacing) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
       }
-      // horizontal lines
+
+      // draw horizontal grid lines
       for (let y = -spacing + (offset % spacing); y < canvas.height; y += spacing) {
         ctx.beginPath();
         ctx.moveTo(0, y);
