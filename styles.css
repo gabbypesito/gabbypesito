@@ -27,7 +27,7 @@ canvas#tronGrid {
 
 .side-box {
   width: 22%;
-  background-color: #333;
+  background-color: #1f1f1f;
   padding: 10px;
   box-sizing: border-box;
 }
