@@ -1,8 +1,11 @@
+/* Import Neue Pixel Sans */
+@import url('https://api.fontshare.com/v2/css?f[]=neue-pixel-sans@400&display=swap');
+
 /* Reset & base */
 body {
   margin: 0;
   padding: 0;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Neue Pixel Sans", monospace;
   color: #c0c0c0;
   position: relative;
   overflow-x: hidden;
@@ -25,7 +28,8 @@ canvas#tronGrid {
   z-index: 1;
 }
 
-.side-box {
+.side-box,
+.container {
   width: 22%;
   background-color: rgba(31, 31, 31, 0.85);
   padding: 10px;
@@ -39,7 +43,14 @@ canvas#tronGrid {
   -webkit-backdrop-filter: blur(8px);
 }
 
-.side-box::before {
+/* Keep main content wider */
+.container {
+  width: 54%;
+}
+
+/* Decorative top border bar */
+.side-box::before,
+.container::before {
   content: "";
   position: absolute;
   top: -10px;
@@ -50,8 +61,9 @@ canvas#tronGrid {
   border-radius: 10px 10px 0 0;
 }
 
-.side-box h2 {
-  font-family: "Courier New", Courier, monospace;
+.side-box h2,
+.container h2 {
+  font-family: "Neue Pixel Sans", monospace;
   font-size: 1.2em;
   color: #00ccff;
   margin: 0;
@@ -61,22 +73,17 @@ canvas#tronGrid {
   text-align: center;
 }
 
-.side-box p {
-  font-family: "Courier New", Courier, monospace;
+.side-box p,
+.container p {
+  font-family: "Neue Pixel Sans", monospace;
   color: #c0c0c0;
   font-size: 0.9em;
   line-height: 1.5;
 }
 
-.container {
-  width: 54%;
-  background-color: #1f1f1f;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
 h1 {
   position: relative;
+  font-family: "Neue Pixel Sans", monospace;
   font-size: 2.5em;
   margin: 0 0 10px 0;
 }
@@ -85,6 +92,7 @@ h1 {
   display: inline-block;
   position: relative;
   color: #00ccff;
+  font-family: "Neue Pixel Sans", monospace;
 }
 
 .glitch::before,
@@ -131,6 +139,7 @@ h1 {
   width: 100%;
   border: 1px solid #00ccff;
   border-collapse: collapse;
+  font-family: "Neue Pixel Sans", monospace;
 }
 
 .menu td {
@@ -140,6 +149,7 @@ h1 {
 }
 
 .marquee {
+  font-family: "Neue Pixel Sans", monospace;
   font-size: 1.2em;
   color: #00ffcc;
   animation: blink 1.5s steps(1) infinite;
@@ -164,6 +174,7 @@ hr {
 }
 
 .footer {
+  font-family: "Neue Pixel Sans", monospace;
   font-size: 0.8em;
   text-align: center;
   margin-top: 20px;
