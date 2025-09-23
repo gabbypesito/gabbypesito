@@ -136,6 +136,7 @@ h1 {
 }
 
 .menu table {
+  color: #c0c0c0;
   width: 100%;
   border: 1px solid #00ccff;
   border-collapse: collapse;
